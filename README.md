@@ -156,8 +156,7 @@ TFG-proyecto/
 │   └── web/                       # Configuración Web
 │
 ├── LANZAR_FINAL.bat               # ⚡ Script para lanzar todo el proyecto
-├── INSTRUCCIONES.txt              # 📄 Guía rápida de inicio
-├── RESUMEN_FINAL.txt              # 📊 Estado completo del proyecto
+├── ARQUITECTURA.md                # 🏗️ Arquitectura del proyecto
 └── README.md                      # 📖 Este archivo (documentación completa)
 ```
 
