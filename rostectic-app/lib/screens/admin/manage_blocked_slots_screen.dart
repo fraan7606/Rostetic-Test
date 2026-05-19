@@ -82,8 +82,8 @@ class _ManageBlockedSlotsScreenState extends State<ManageBlockedSlotsScreen> {
     TimeOfDay? endTime;
 
     if (blockedSlot != null) {
-      final start = DateTime.parse(blockedSlot['startsAt']);
-      final end = DateTime.parse(blockedSlot['endsAt']);
+      final start = DateTime.parse(blockedSlot['startsAt']).toLocal();
+      final end = DateTime.parse(blockedSlot['endsAt']).toLocal();
       startDate = start;
       startTime = TimeOfDay.fromDateTime(start);
       endDate = end;
@@ -236,8 +236,14 @@ class _ManageBlockedSlotsScreenState extends State<ManageBlockedSlotsScreen> {
                   );
 
                   final body = {
-                    'startsAt': startsAt.toIso8601String(),
-                    'endsAt': endsAt.toIso8601String(),
+                    'startsAt': DateTime(startsAt.year, startsAt.month,
+                            startsAt.day, startsAt.hour, startsAt.minute)
+                        .toUtc()
+                        .toIso8601String(),
+                    'endsAt': DateTime(endsAt.year, endsAt.month, endsAt.day,
+                            endsAt.hour, endsAt.minute)
+                        .toUtc()
+                        .toIso8601String(),
                     'specialistId': selectedSpecialistId,
                   };
 
@@ -342,8 +348,8 @@ class _ManageBlockedSlotsScreenState extends State<ManageBlockedSlotsScreen> {
                   itemCount: _blockedSlots.length,
                   itemBuilder: (context, index) {
                     final slot = _blockedSlots[index];
-                    final startsAt = DateTime.parse(slot['startsAt']);
-                    final endsAt = DateTime.parse(slot['endsAt']);
+                    final startsAt = DateTime.parse(slot['startsAt']).toLocal();
+                    final endsAt = DateTime.parse(slot['endsAt']).toLocal();
                     final specialistName =
                         slot['specialist']?['name'] ?? 'Todos';
 

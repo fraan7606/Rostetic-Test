@@ -52,6 +52,9 @@ export const createBlockedSlot = async (req, res, next) => {
     try {
         const { startsAt, endsAt, reason, specialistId } = req.body;
         
+        console.log('Recibido startsAt:', startsAt);
+        console.log('Recibido endsAt:', endsAt);
+        
         const blockedSlot = await prisma.blockedTimeSlot.create({
             data: {
                 startsAt: new Date(startsAt),
